@@ -11,5 +11,5 @@ Before you start up server, use `bundle` or `bundle install` under your project 
 ### Branch
 If possible, to avoid any unnecessary conflicts, please add features in your own branch and merge back. Or just leave it on your local repositary, we will meet up and figure out a solution.
 ###Special Notice
-For **Windows**, there is a problem with **coffee-script-source** version later than**1.8.0**. I already add `gem 'coffee-script-source', '1.8.0'` into Gemfile. Please run `bundle show` to check you have correct coffee-script-source version.<br>
+For **Windows**, there is a problem with **coffee-script-source** version later than **1.8.0**. I already add `gem 'coffee-script-source', '1.8.0'` into Gemfile. Please run `bundle show` to check you have correct coffee-script-source version. If you have other version, change to 1.8.0 by using `bundle update coffee-script-source`<br>
 ** Please don't modify the **Gemfile** without informing other people.
