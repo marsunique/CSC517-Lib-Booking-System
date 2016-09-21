@@ -4,7 +4,6 @@
 * Rails version: 5.0.0.1
 <br>** Rails version should be same for three of us. If you are using a older version, please update your rails.
 <br>** Ruby version could be different. But it is better no older than **2.2.4** 
-####
 
 ### Bundle
 Clone this repository to your computer, stage and keep track of all files.<br>
