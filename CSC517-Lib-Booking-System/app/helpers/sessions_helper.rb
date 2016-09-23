@@ -8,7 +8,10 @@ module SessionsHelper
   end
 # if user has logged in, return true; else return false
   def logged_in?
-  !current_user.nil?
+    !current_user.nil?
+  end
+  def isUser?
+    @user.authority == 1
   end
   def log_out
     session.delete(:user_id)
