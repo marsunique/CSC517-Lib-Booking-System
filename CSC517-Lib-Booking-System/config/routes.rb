@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :histories
+  resources :rooms
   resources :users
   root 'sessions#new'
   get 'static_pages/about'
