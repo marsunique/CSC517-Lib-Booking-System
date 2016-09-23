@@ -76,6 +76,10 @@ class UsersController < ApplicationController
     redirect_to(root_url) unless current_user?(@user)
   end
 
+  def current_user?(user)
+    user == current_user end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
