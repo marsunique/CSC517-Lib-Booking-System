@@ -61,9 +61,15 @@ class RoomsController < ApplicationController
     end
   end
 
-  def searchRoom
-
+  def searchAllRoom
+    @rooms = Room.all
+    if params[:search]
+      @rooms = Room.search(params[:search]).order("created_at DESC")
+    else
+      @rooms = Room.all.order('created_at DESC')
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

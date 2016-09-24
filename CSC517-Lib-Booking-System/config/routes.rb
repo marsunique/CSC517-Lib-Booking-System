@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'sessions/destroy'
 
-  get 'searchRoom', to: 'rooms#searchRoom'
+  get 'searchAllRoom', to: 'rooms#searchAllRoom'
 
   get '/login', to: 'sessions#new'
 

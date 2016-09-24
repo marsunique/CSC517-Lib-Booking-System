@@ -1,0 +1,5 @@
+<% if @rooms.present? %>
+    <%= render @rooms %>
+<% else %>
+    <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+<% end %>
