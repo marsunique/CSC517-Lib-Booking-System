@@ -1,5 +1,6 @@
 class CreateHistories < ActiveRecord::Migration[5.0]
   def change
+    drop_table :histories
     create_table :histories do |t|
       t.string :number
       t.string :email

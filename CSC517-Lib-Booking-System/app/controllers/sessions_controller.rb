@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase, authority: '1')
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to NEEDCHANGE #need to change as manager
+      redirect_to user #need to change as manager
 
     else
       user = User.find_by(email: params[:session][:email].downcase, authority: '0')
@@ -24,5 +24,8 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to root_url
+  end
+
+  def welcome
   end
 end

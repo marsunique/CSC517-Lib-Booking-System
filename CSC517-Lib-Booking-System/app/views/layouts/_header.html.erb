@@ -1,23 +1,35 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse" style="background-color: #B00100">
   <div class="container">
   <%= link_to "NCSU Library Booking System", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
-        <% if logged_in? && isUser?%>
-            <li><%= link_to "Search Room", searchRoom_path(current_user) %></li> <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "Profile", current_user %></li>
-          <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
-          <li class="divider"></li>
-          <li>
-            <%= link_to "Log out", logout_path, method: "delete" %> </li>
-        </ul> </li>
+
+        <% if logged_in? %>
+            <li style="color: #f0f0f0"><%= link_to "Search Room", searchRoom_path(current_user) %></li>
+            <% if isAdmin? %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Manage <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Manage User", users_path%></li>
+                    <li><%= link_to "Manage Room", rooms_path%></li>
+                  </ul>
+                </li>
+            <% end %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Log out", logout_path, method: "delete" %> </li>
+              </ul>
+            </li>
         <% else %>
             <li><%= link_to "Log in", login_path %></li>
-        <% end %>      </ul>
+        <% end %>
+
+      </ul>
     </nav>
 </div>
 </header>
