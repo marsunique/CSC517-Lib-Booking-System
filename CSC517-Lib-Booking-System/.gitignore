@@ -21,4 +21,4 @@
 .byebug_history
 
 # Ignore Gemfile.lock
-Gemfile.lock
+/Gemfile.lock
