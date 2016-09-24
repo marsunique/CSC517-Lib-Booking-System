@@ -1,4 +1,5 @@
 class Room < ApplicationRecord
-  where("name LIKE ?", "%#{search}%")
-  where("content LIKE ?", "%#{search}%")
+  def self.search(search)
+    where("number LIKE ?", "%#{search}%")
+  end
 end

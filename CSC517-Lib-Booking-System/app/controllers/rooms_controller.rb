@@ -5,6 +5,11 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     @rooms = Room.all
+    if params[:search]
+      @rooms = Room.search(params[:search])
+    else
+      @rooms = Room.all.order('created_at DESC')
+    end
   end
 
   # GET /rooms/1
