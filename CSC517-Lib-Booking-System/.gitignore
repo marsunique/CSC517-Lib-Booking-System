@@ -20,5 +20,9 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+<<<<<<< HEAD
 #Ignore Gemfile.lock
+=======
+# Ignore Gemfile.lock
+>>>>>>> origin/ddu3
 Gemfile.lock
