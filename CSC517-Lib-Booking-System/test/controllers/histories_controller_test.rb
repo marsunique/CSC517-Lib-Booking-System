@@ -17,7 +17,7 @@ class HistoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create history" do
     assert_difference('History.count') do
-      post histories_url, params: { history: { begintime: @history.begintime, date: @history.date, email: @history.email, endtime: @history.endtime, number: @history.number } }
+      post histories_url, params: { history: { begintime: @history.begintime, building: @history.building, date: @history.date, email: @history.email, endtime: @history.endtime, number: @history.number } }
     end
 
     assert_redirected_to history_url(History.last)
@@ -34,7 +34,7 @@ class HistoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update history" do
-    patch history_url(@history), params: { history: { begintime: @history.begintime, date: @history.date, email: @history.email, endtime: @history.endtime, number: @history.number } }
+    patch history_url(@history), params: { history: { begintime: @history.begintime, building: @history.building, date: @history.date, email: @history.email, endtime: @history.endtime, number: @history.number } }
     assert_redirected_to history_url(@history)
   end
 

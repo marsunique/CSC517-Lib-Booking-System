@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Number</th>
+      <th>Building</th>
       <th>Email</th>
       <th>Date</th>
       <th>Begintime</th>
@@ -18,6 +19,7 @@
     <% @histories.each do |history| %>
       <tr>
         <td><%= history.number %></td>
+        <td><%= history.building %></td>
         <td><%= history.email %></td>
         <td><%= history.date %></td>
         <td><%= history.begintime %></td>

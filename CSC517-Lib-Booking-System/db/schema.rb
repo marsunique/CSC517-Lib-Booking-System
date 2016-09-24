@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924200322) do
+ActiveRecord::Schema.define(version: 20160924225724) do
 
   create_table "histories", force: :cascade do |t|
     t.string   "number"
+    t.string   "building"
     t.string   "email"
     t.string   "date"
     t.string   "begintime"
