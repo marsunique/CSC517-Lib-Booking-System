@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update, :show, :index, :new, :creat, :destroy]
   before_action :correct_user, only: [:edit, :update]
+  before_action :admin_login, only: [:new, :create, :destroy, :index]
 
   # GET /users
   # GET /users.json
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User info was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -78,6 +79,13 @@ class UsersController < ApplicationController
 
   def current_user?(user)
     user == current_user end
+
+  def admin_login
+    unless isAdmin?
+      flash[:danger] = "Permission denied! Only admin have authority to create users."
+      redirect_to(current_user)
+    end
+  end
 
 
   private

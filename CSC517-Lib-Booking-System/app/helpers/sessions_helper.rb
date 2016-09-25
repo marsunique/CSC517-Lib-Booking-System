@@ -11,10 +11,10 @@ module SessionsHelper
     !current_user.nil?
   end
   def isUser?
-    @current_user.authority == '0'
+    current_user.authority == '0'
   end
   def isAdmin?
-    @current_user.authority == '1'
+    current_user.authority == '1'
   end
   def log_out
     session.delete(:user_id)

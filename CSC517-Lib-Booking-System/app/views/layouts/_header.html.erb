@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top navbar-inverse" style="background-color: #B00100">
+<header class="navbar navbar-fixed-top navbar-inverse", id="booking_system">
   <div class="container">
   <%= link_to "NCSU Library Booking System", root_path, id: "logo" %>
     <nav>
@@ -6,7 +6,7 @@
         <li><%= link_to "Home", root_path %></li>
 
         <% if logged_in? %>
-            <li style="color: #f0f0f0"><%= link_to "Search Room", searchRoom_path(current_user) %></li>
+            <li><%= link_to "Search Room", searchRoom_path(current_user) %></li>
             <% if isAdmin? %>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Manage <b class="caret"></b></a>

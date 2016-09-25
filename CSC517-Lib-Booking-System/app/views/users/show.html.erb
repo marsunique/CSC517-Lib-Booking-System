@@ -4,13 +4,20 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-
-
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
-
-
-<%= link_to 'New User', new_user_path %>
+<p>
+  <strong>Type:</strong>
+  <% if @user.authority == '0'%>
+      User
+  <% else %>
+      Admin
+  <% end %>
+</p>
+<p>
+  <strong>Registration Time:</strong>
+  <%= @user.created_at %>
+</p>
 
