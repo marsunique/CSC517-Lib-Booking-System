@@ -18,10 +18,9 @@
 
   <div class="field">
     <%= f.label :building %>
-    <%= select_tag(:building, options_for_select([['Hunt', 1], ['Hill', 2]], 2))%>
+    <%= select_tag("history[building]", options_for_select([['Hunt', "Hunt"], ['Hill', "Hill"]], 2))%>
   </div>
     <div class="field">
-      <%= f.label :email %>
       <%= hidden_field_tag("history[email]", current_user.email) %>
     </div>
 
