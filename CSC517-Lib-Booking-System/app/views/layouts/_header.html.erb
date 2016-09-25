@@ -3,6 +3,7 @@
   <%= link_to "NCSU Library Booking System", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <li style="font-weight: bold"><%= link_to "Hey there! #{current_user.name}" %></li>
         <li><%= link_to "Home", root_path %></li>
 
         <% if logged_in? %>
@@ -22,6 +23,7 @@
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
+                <li><%= link_to "Switch User", switch_path, method: "delete" %></li>
                 <li><%= link_to "Log out", logout_path, method: "delete" %> </li>
               </ul>
             </li>

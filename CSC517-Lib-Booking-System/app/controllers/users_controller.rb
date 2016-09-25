@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
+  include UsersHelper
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:edit, :update, :show, :index, :new, :creat, :destroy]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user_show, only: [:show]
+  #user cannot see other's info, admin can
+  before_action :correct_user_edit, only:[:edit, :update]
+  #admin and user cannot edit other's info
   before_action :admin_login, only: [:new, :create, :destroy, :index]
 
   # GET /users
@@ -52,6 +56,14 @@ class UsersController < ApplicationController
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    #unless @user.update(user_params)
+      #respond_to do /format/
+        #format.html { render :edit }
+        #format.json { render json: @user.errors, status: :unprocessable_entity }
+      #end
+    #else
+      #redirect_to @user
+      #flash[:success] = 'User Info Was Successfully Updated.'
     end
   end
 
@@ -59,34 +71,13 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    #respond_to do |format|
+      #format.html { redirect_to users_url, notice: 'User was successfully deleted.' }
+      #format.json { head :no_content }
+    #end
+    redirect_to users_url
+    flash[:success] = 'User was successfully deleted'
   end
-
-  def logged_in_user
-    unless logged_in?
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
-
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
-  end
-
-  def current_user?(user)
-    user == current_user end
-
-  def admin_login
-    unless isAdmin?
-      flash[:danger] = "Permission denied! Only admin have authority to create users."
-      redirect_to(current_user)
-    end
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

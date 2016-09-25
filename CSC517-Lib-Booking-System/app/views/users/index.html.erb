@@ -12,13 +12,14 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @users.each do |f| %>
       <tr>
-        <td><%= user.email %></td>
-        <td><%= user.name %></td>
-        <td id="show"><%= link_to 'Show', user %></td>
-        <td id="edit"><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td id="delete"><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= f.email %></td>
+        <td><%= f.name %></td>
+        <td><%= f %></td>
+        <td id="show"><%= link_to 'Show', f %></td>
+        <td id="edit"><%= link_to 'Edit', edit_user_path(f) %></td>
+        <td id="delete"><%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
