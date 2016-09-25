@@ -26,21 +26,23 @@
 
   <div class="field">
     <%= f.label :date %>
-    <%= f.text_field :date %>
+    <%= select_tag("history[date]", options_for_select([[], [Time.now.to_date, "#{Time.now.to_date}"], [Time.now.to_date + 1.days, "#{Time.now.to_date + 1.days}"], [Time.now.to_date + 2.days, "#{Time.now.to_date + 2.days}"], [Time.now.to_date + 3.days, "#{Time.now.to_date + 3.days}"], [Time.now.to_date + 4.days, "#{Time.now.to_date + 4.days}"], [Time.now.to_date + 5.days, "#{Time.now.to_date + 5.days}"], [Time.now.to_date + 6.days, "#{Time.now.to_date + 6.days}"], [Time.now.to_date + 7.days, "#{Time.now.to_date + 7.days}"]], 9 ))%>
   </div>
 
   <div class="field">
     <%= f.label :begintime %>
-    <%= f.text_field :begintime %>
-  </div>
-
-  <div class="field">
-    <%= f.label :endtime %>
-    <%= f.text_field :endtime %>
+    <%= select_tag("history[begintime]", options_for_select([["0", '0'], ["2", '2'], ["4", '4'], ["6", '6'],
+                                                             ["8", '8'], ["10", '10'], ["12", '12'], ["14", '14'],
+                                                             ["16", '16'], ["18", '18'], ["20", '20'], ["22", '22'],
+                                                             ], 12)) %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 
+
 <% end %>
+
+
+

@@ -12,6 +12,12 @@ class HistoriesController < ApplicationController
   def show
   end
 
+  # Show my history of booking room
+  def showmine
+    sql = "select *from histories where email = '#{current_user.email}'"
+    @histories = History.find_by_sql(sql)
+  end
+
   # GET /histories/new
   def new
     @history = History.new
