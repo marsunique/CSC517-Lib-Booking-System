@@ -18,13 +18,12 @@
 
   <div class="field">
     <%= f.label :building %>
-    <%= f.text_field :building %>
+    <%= select_tag(:building, options_for_select([['Hunt', 1], ['Hill', 2]], 2))%>
   </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+    <div class="field">
+      <%= f.label :email %>
+      <%= hidden_field_tag("history[email]", current_user.email) %>
+    </div>
 
   <div class="field">
     <%= f.label :date %>
@@ -44,4 +43,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

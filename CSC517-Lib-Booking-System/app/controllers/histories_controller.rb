@@ -70,5 +70,6 @@ class HistoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def history_params
       params.require(:history).permit(:number, :building, :email, :date, :begintime, :endtime)
+      #params[:history][:email] = params[:session][:password]
     end
 end
