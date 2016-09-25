@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :histories
   resources :rooms
   resources :users
-  root 'sessions#new'
+
+  root 'sessions#welcome'
+
   get 'static_pages/about'
 
   get 'static_pages/contact'
@@ -16,11 +18,13 @@ Rails.application.routes.draw do
   get 'searchAllRoom', to: 'rooms#searchAllRoom'
   get 'showmine', to: 'histories#showmine'
 
-  get '/login', to: 'sessions#new'
+  get 'login', to: 'sessions#new'
 
-  post '/login', to: 'sessions#create'
+  post 'login', to: 'sessions#create'
 
-  delete '/logout', to: 'sessions#destroy'
+  delete 'logout', to: 'sessions#destroy'
+
+  delete 'switch', to: 'sessions#switch'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :password %>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </div>
 
   <div class="field">
@@ -28,10 +28,10 @@
 
   <div class="field">
     <%= f.label :authority %>
-    <%= f.text_field :authority %>
+    <%= select_tag("user[authority]", options_for_select([['Admin', "1"],['User', "0"]], 2)) %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Creat", class: "btn btn-primary" %>
   </div>
 <% end %>
