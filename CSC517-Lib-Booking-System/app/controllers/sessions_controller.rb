@@ -5,12 +5,9 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      if(user.authority == '0')
+      if(user.authority == '0' || user.authority == '1' || user.authority == '2')
         log_in user
         redirect_to root_url
-      elsif(user.authority == '1' || user.authority == '2')
-          log_in user
-          redirect_to user #need to change as manager
       else
         flash.now[:danger] = 'Invalid Message, Please Contact Admin'
         render "new"
