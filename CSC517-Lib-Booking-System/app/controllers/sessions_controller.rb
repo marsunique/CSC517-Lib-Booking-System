@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 #        flash.now[:danger] = 'Invalid Message, Please Contact Admin'
 #        render "new"
 #      end
-#    else
+    else
       flash.now[:danger] = 'Invalid Email/Password Combination'
       render "new"
     end
