@@ -74,12 +74,11 @@ class UsersController < ApplicationController
     if @user.authority == '2'
       flash[:danger] = 'Pre-configured Admin Cannot Be Deleted'
       redirect_to users_path
+    elsif @user.email == current_user.email
+      flash[:danger] = 'Oops. Don\'t Delete Yourself'
+      redirect_to users_path
     else
       @user.destroy
-    #respond_to do |format|
-      #format.html { redirect_to users_url, notice: 'User was successfully deleted.' }
-      #format.json { head :no_content }
-    #end
       redirect_to users_url
       flash[:success] = 'User Was Successfully Deleted'
     end
