@@ -45,6 +45,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
@@ -77,6 +78,10 @@ class UsersController < ApplicationController
     #end
     redirect_to users_url
     flash[:success] = 'User was successfully deleted'
+  end
+
+  # show history
+  def showhistory
   end
 
   private

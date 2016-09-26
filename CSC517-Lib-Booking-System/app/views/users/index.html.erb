@@ -20,6 +20,7 @@
         <td id="show"><%= link_to 'Show', f %></td>
         <td id="edit"><%= link_to 'Edit', edit_user_path(f) %></td>
         <td id="delete"><%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td id="showother"><%= link_to 'history#show', showhistory_path(f) %></td>
       </tr>
     <% end %>
   </tbody>

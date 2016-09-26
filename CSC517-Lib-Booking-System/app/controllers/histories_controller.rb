@@ -18,6 +18,12 @@ class HistoriesController < ApplicationController
     @histories = History.find_by_sql(sql)
   end
 
+  #show a person's history
+  def showother
+    sql = "select *from histories where email = '#{params[:email]}'"
+    @histories = History.find_by_sql(sql)
+  end
+
   # GET /histories/new
   def new
     @history = History.new

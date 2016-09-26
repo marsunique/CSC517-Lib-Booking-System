@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get 'searchAllRoom', to: 'rooms#searchAllRoom'
   get 'showmine', to: 'histories#showmine'
 
+  #get 'showother', to: 'histories#showother'
+  get 'showhistory', to: 'users#showhistory'
+
   get 'login', to: 'sessions#new'
 
   post 'login', to: 'sessions#create'

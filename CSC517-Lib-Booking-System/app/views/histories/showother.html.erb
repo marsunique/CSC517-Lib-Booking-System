@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Histories</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Number</th>
+    <th>Building</th>
+    <th>Email</th>
+    <th>Date</th>
+    <th>Begintime</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @histories.each do |history| %>
+      <tr>
+        <td><%= history.number %></td>
+        <td><%= history.building %></td>
+        <td><%= history.email %></td>
+        <td><%= history.date %></td>
+        <td><%= history.begintime %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

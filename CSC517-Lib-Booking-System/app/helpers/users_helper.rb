@@ -33,5 +33,8 @@ module UsersHelper
       redirect_to(current_user)
     end
   end
+  def get_current_email(user)
+    return user.email
+  end
 
 end
