@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get 'showmine', to: 'histories#showmine'
 
   #get 'showother', to: 'histories#showother'
-  get 'showhistory', to: 'users#showhistory'
+
+  get 'showhistory', to: 'histories#showhistory'
 
   get 'login', to: 'sessions#new'
 

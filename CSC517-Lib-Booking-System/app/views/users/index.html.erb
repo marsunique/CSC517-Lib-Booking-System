@@ -18,7 +18,7 @@
         <td><%= f.name %></td>
         <td id="show"><%= link_to 'Detail', f %></td>
         <td id="delete"><%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td id="showother"><%= link_to 'history#show', showhistory_path(f) %></td>
+        <td id="showother"><%= link_to 'Booking History', showhistory_path(:email => f.email) %></td>
       </tr>
     <% end %>
   </tbody>

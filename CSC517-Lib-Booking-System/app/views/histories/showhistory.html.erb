@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Histories</h1>
+<h1>Booking History</h1>
 
 <table>
   <thead>
   <tr>
-    <th>Number</th>
-    <th>Building</th>
-    <th>Email</th>
-    <th>Date</th>
-    <th>Begintime</th>
+    <th style="width: 100px">Number</th>
+    <th style="width: 100px">Building</th>
+    <th style="width: 250px">Email</th>
+    <th style="width: 200px">Date</th>
+    <th style="width: 100px">Begintime</th>
     <th colspan="3"></th>
   </tr>
   </thead>
 
   <tbody>
-  <% @histories.each do |history| %>
+  <% @roomhistory.each do |history| %>
       <tr>
         <td><%= history.number %></td>
         <td><%= history.building %></td>
@@ -26,5 +26,8 @@
   <% end %>
   </tbody>
 </table>
+<div class="actions", id="button">
+  <%= link_to 'Back', users_path, class:"btn btn-danger"%>
+</div>
 
 <br>
