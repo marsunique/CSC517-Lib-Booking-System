@@ -82,10 +82,24 @@ class HistoriesController < ApplicationController
   # DELETE /histories/1
   # DELETE /histories/1.json
   def destroy
-    @history.destroy
-    respond_to do |format|
-      format.html { redirect_to histories_url, notice: 'History was successfully destroyed.' }
-      format.json { head :no_content }
+    if(@history.date == "#{Time.now.to_date}") #judge if it is today
+      if(@history.begintime < "#{Time.now.hour+0}")  #judge if the time has passed
+        flash.now[:danger] = 'The reservation begins, you cannot do anything about it'
+        @histories = History.all
+        render "showmine"
+      else
+        @history.destroy
+        respond_to do |format|
+          format.html { redirect_to histories_url, notice: 'History was successfully destroyed.' }
+          format.json { head :no_content }
+        end
+      end
+    elsif(@history.date > "#{Time.now.to_date}")
+      @history.destroy
+      respond_to do |format|
+        format.html { redirect_to histories_url, notice: 'History was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
