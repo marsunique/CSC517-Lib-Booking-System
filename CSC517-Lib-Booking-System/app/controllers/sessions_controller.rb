@@ -12,14 +12,13 @@ class SessionsController < ApplicationController
           log_in user
           redirect_to user #need to change as manager
       else
-        flash.now[:danger] = 'Invalid message, please contact admin'
+        flash.now[:danger] = 'Invalid Message, Please Contact Admin'
         render "new"
       end
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'Invalid Email/Password Combination'
       render "new"
     end
-
   end
 
   def welcome
