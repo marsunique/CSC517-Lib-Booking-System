@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div>
 <p>
   <strong>Number:</strong>
   <%= @history.number %>
@@ -24,7 +24,10 @@
   <strong>Begintime:</strong>
   <%= @history.begintime %>
 </p>
+</div>
 
 <div class="actions", id="button">
-<%= link_to 'Back', showmine_path, class: "btn btn-danger" %>
+<p>
+  <%= link_to 'Back', showmine_path, class: "btn btn-danger" %>
+</p>
 </div>
