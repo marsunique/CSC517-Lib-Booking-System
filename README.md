@@ -3,6 +3,7 @@
 * Pre-configured User: username:test@test.com Password:000000
 * Admin: username:1@test.com Password:000000
 * User: username:user@test.com Password:000000
+
 ### Version
 * Ruby version: 2.3.0
 * Rails version: 5.0.0.1
