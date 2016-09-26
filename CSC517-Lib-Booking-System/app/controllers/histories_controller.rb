@@ -19,9 +19,13 @@ class HistoriesController < ApplicationController
   end
 
   #show a person's history
-  def showother
-    sql = "select *from histories where email = '#{params[:email]}'"
-    @histories = History.find_by_sql(sql)
+  #def showother
+  #  sql = "select *from histories where email = '#{params[:email]}'"
+  #  @histories = History.find_by_sql(sql)
+  #end
+
+  def showhistory
+    @roomhistory = History.where(email: params[:email])
   end
 
   # GET /histories/new
