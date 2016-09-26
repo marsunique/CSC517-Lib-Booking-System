@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
 
   get 'searchAllRoom', to: 'rooms#searchAllRoom'
+
   get 'showmine', to: 'histories#showmine'
 
   #get 'showother', to: 'histories#showother'

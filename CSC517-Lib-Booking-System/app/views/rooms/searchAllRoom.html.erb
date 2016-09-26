@@ -1,7 +1,7 @@
 <% provide(:title, "Search Room") %> <h1>Search Room</h1>
 <%= form_tag(rooms_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search by number or size" %>
-    <%= submit_tag "Search" %>
+    <%= submit_tag "Search", class: "btn btn-danger" %>
 <% end %>
 
 

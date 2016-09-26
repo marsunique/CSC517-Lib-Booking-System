@@ -71,13 +71,15 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
+    unless @user.authority == '2'
+      @user.destroy
     #respond_to do |format|
       #format.html { redirect_to users_url, notice: 'User was successfully deleted.' }
       #format.json { head :no_content }
     #end
     redirect_to users_url
     flash[:success] = 'User was successfully deleted'
+    end
   end
 
   # show history

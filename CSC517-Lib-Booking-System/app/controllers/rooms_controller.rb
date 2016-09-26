@@ -1,5 +1,8 @@
 class RoomsController < ApplicationController
+  include RoomsHelper
   before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :update, :show, :index, :new, :creat, :destroy]
+  before_action :admin_login, only: [:new, :create, :destroy]
 
   # GET /rooms
   # GET /rooms.json

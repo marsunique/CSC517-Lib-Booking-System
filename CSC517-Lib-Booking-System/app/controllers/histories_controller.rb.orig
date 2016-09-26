@@ -66,6 +66,16 @@ class HistoriesController < ApplicationController
           end
         end
 
+<<<<<<< HEAD
+=======
+    respond_to do |format|
+      if @history.save
+        format.html { redirect_to @history, notice: 'Book Room Successfully.' }
+        format.json { render :show, status: :created, location: @history }
+      else
+        format.html { render :new }
+        format.json { render json: @history.errors, status: :unprocessable_entity }
+>>>>>>> origin/ysun
       end
 
     end
@@ -88,6 +98,7 @@ class HistoriesController < ApplicationController
   # DELETE /histories/1
   # DELETE /histories/1.json
   def destroy
+<<<<<<< HEAD
     if(@history.date == "#{Time.now.to_date}") #judge if it is today
       if(@history.begintime < "#{Time.now.hour+0}")  #judge if the time has passed
         flash.now[:danger] = 'The reservation begins, you cannot do anything about it'
@@ -106,6 +117,12 @@ class HistoriesController < ApplicationController
         format.html { redirect_to histories_url, notice: 'History was successfully destroyed.' }
         format.json { head :no_content }
       end
+=======
+    @history.destroy
+    respond_to do |format|
+      format.html { redirect_to histories_url, notice: 'Room Book Canceled' }
+      format.json { head :no_content }
+>>>>>>> origin/ysun
     end
   end
 

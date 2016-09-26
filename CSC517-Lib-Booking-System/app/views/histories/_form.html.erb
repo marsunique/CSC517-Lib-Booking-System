@@ -21,7 +21,12 @@
     <%= select_tag("history[building]", options_for_select([['Hunt', "Hunt"], ['Hill', "Hill"]], 2))%>
   </div>
     <div class="field">
-      <%= hidden_field_tag("history[email]", current_user.email) %>
+      <% if isAdmin? %>
+          <%= f.label :user_email %>
+          <%= f.email_field :email %>
+      <% else %>
+          <%= hidden_field_tag("history[email]", current_user.email) %>
+      <% end %>
     </div>
 
   <div class="field">
@@ -37,8 +42,9 @@
                                                              ], 12)) %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions", id="button">
+    <%= f.submit "Book This Room", class:"btn btn-danger" %>
+    <%= link_to 'Back', rooms_path, class:"btn btn-primary" %>
   </div>
 
 
