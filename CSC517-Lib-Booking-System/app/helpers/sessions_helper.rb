@@ -14,7 +14,10 @@ module SessionsHelper
     current_user.authority == '0'
   end
   def isAdmin?
-    current_user.authority == '1'
+    current_user.authority == '1' || current_user.authority == '2'
+  end
+  def isPreconAdmin?
+    current_user.authority == '2'
   end
   def log_out
     session.delete(:user_id)

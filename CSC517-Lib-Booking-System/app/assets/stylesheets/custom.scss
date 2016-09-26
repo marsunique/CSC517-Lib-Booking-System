@@ -1,10 +1,18 @@
 @import "bootstrap-sprockets"; @import "bootstrap";
 
 /* universal */
-body {
-  padding-top: 60px;
+html {
+  width: 100%;
 }
-section { overflow: auto;
+div a:hover{
+  color: #B00100; background-color: transparent;
+}
+body {
+  padding-top: 90px;
+  width: 100%;
+}
+section {
+  overflow: auto;
 }
 textarea {
   resize: vertical;
@@ -15,8 +23,16 @@ textarea {
 .center h1 { margin-bottom: 10px;
 }
 
+/* div */
+div#button
+a {
+  color: white;
+}
+
+
 /* typography */
-h1, h2, h3, h4, h5, h6 { line-height: 1;
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
 }
 h1 {
   font-size: 3em; letter-spacing: -2px; margin-bottom: 30px; text-align: center;
@@ -29,45 +45,59 @@ p{
 }
 
 /* talbe */
-table#user_index a:hover{
+table#user_index
+a:hover{
   color: #B00100; background-color: transparent;
 }
-table#user_index td#show{
+td#show{
   width: 75px;
 }
-table#user_index td#edit{
+td#edit{
   width: 75px;
 }
-table#user_index td#delete{
+td#delete{
+  width: 75px;
+}
+
+table#room_index
+a:hover{
+  color: #B00100; background-color: transparent;
+}
+td#show{
+  width: 75px;
+}
+td#edit{
+  width: 75px;
+}
+td#delete{
   width: 75px;
 }
 
 /* footer */
-footer { margin-top: 45px; padding-top: 5px; border-top: 1px solid #eaeaea;
+footer {
+  margin-top: 45px; padding-top: 5px; border-top: 1px solid #eaeaea;
   color: #777;
 }
-footer a { color: #555;
+footer a {
+  color: #555;
 }
-footer a:hover { color: #B00100; background-color: transparent;
+footer a:hover {
+  color: #B00100; background-color: transparent;
 }
-footer small { float: left;
+footer small {
+  float: left;
 }
 footer ul {
   float: right; list-style: none;
 }
-footer ul li { float: left; margin-left: 15px;
+footer ul li {
+  float: left; margin-left: 15px;
 }
 /* a */
-a:hover {
-  color: #B00100; background-color: transparent;
-}
 
 /* header */
 header#booking_system{
-  color: #ffffff; background-color: #B00100;
-}
-header li{
-  color: white;
+  background-color: #B00100;
 }
 #logo {
   float: left;

@@ -1,32 +1,39 @@
-<%= form_for(room) do |f| %>
-  <% if room.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+<% provide(:title, "Edit Room") %>
+<div class="row">
+  <div>
+    <%= form_for(room) do |f| %>
+        <% if room.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
 
-      <ul>
-      <% room.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+              <ul>
+                <% room.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :number %>
-    <%= f.text_field :number %>
+        <div class="field">
+          <%= f.label :number %>
+          <%= f.text_field :number %>
+        </div>
+
+        <div class="field">
+          <%= f.label :size %>
+          <%= select_tag("room[size]", options_for_select([['Small', "4"], ['Medium', "6"], ['Large', "12"]], 3))%>
+        </div>
+
+        <div class="field">
+          <%= f.label :building %>
+          <%= select_tag("room[building]", options_for_select([['James.B.Hunt', "James.B.Hunt"], ['D.H.Hill', "D.H.Hill"]], 2))%>
+        </div>
+
+        <div class="actions", id="button">
+          <%= f.submit "Save Change", class: "btn btn-danger" %>
+          <%= link_to 'Discard', rooms_path, class: "btn btn-primary"%>
+        </div>
+    <% end %>
+
   </div>
-
-  <div class="field">
-    <%= f.label :size %>
-    <%= f.text_field :size %>
-  </div>
-
-  <div class="field">
-    <%= f.label :building %>
-    <%= f.text_field :building %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

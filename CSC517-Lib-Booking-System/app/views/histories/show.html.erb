@@ -25,7 +25,6 @@
   <%= @history.begintime %>
 </p>
 
-
-
-<%= link_to 'Edit', edit_history_path(@history) %> |
-<%= link_to 'Back', histories_path %>
+<div class="actions", id="button">
+<%= link_to 'Back', showmine_path, class: "btn btn-danger" %>
+</div>
