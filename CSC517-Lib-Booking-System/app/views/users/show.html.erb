@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div>
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
@@ -20,5 +20,11 @@
   <strong>Registration Time:</strong>
   <%= @user.created_at %>
 </p>
-<%= link_to 'Back', users_path%>
+</div>
 
+
+<% if isAdmin? && @user.email != current_user.email %>
+    <div class="actions", id="button">
+        <%= link_to 'Back', users_path, class: "btn btn-danger" %>
+    </div>
+<% end %>
