@@ -24,15 +24,16 @@ Following is the the detailed infomation.
 * Delete admins (except himself) and users.
 * Edit profile and change password.
 * Manage rooms (add, delete and show detail).
-* View booking history of a user.
-* Book a room on behalf of a user or himself. Cancel a reservation if it has not started
+* View booking history of a user (Manage->Manage User).
+* View booking history of a room (Manage->Manage Room).
+* Book a room on behalf of a user or himself. Cancel a reservation if it has not started.
 
 ### Library Members (Normal User)
 * View and edit profile.
 * Search rooms.
 * View and book a room.
 * Cancel a reservation if it has not started.
-* View own booking history.
+* View own booking history (Room->My Booking History).
 
 ## Notice
 If admin books a room on behalf of a user, it would redirect to **All Book Histories** page instead of a specific record page directly.
