@@ -64,6 +64,7 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     flash[:success] = 'Room Is Successfully Deleted'
+    redirect_to rooms_path
   end
 
   def searchAllRoom
