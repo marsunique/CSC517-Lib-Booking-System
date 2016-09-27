@@ -45,6 +45,30 @@ class HistoriesController < ApplicationController
       if(@history.begintime < "#{Time.now.hour+1}")  #judge if the time has passed
         flash.now[:danger] = 'invalid time'
         render "new"
+      else
+        sql = "select number from rooms where building = '#{@history.building}' and number = '#{@history.number}'"
+        t = Room.find_by_sql(sql)
+        if t[0].nil? #room data is invalid
+          flash.now[:danger] = 'no such room'
+          render "new"
+        else #room is existed
+          sql = "select id from histories where building = '#{@history.building}' and number = '#{@history.number}' and date = '#{@history.date}' and begintime = '#{@history.begintime}'"
+          h = History.find_by_sql(sql)
+          if !h[0].nil? #has been lent
+            flash.now[:danger] = 'The time is unavailable'
+            render "new"
+          else
+            respond_to do |format|
+              if @history.save
+                format.html { redirect_to @history, notice: 'History was successfully created.' }
+                format.json { render :show, status: :created, location: @history }
+              else
+                format.html { render :new }
+                format.json { render json: @history.errors, status: :unprocessable_entity }
+              end
+            end
+          end
+        end
       end
     else # time is valid
       sql = "select number from rooms where building = '#{@history.building}' and number = '#{@history.number}'"
