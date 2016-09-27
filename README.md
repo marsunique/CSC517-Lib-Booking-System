@@ -4,6 +4,8 @@
 * Admin: username:1@test.com Password:000000
 * User: username:user@test.com Password:000000
 
+# Please do not delete 1@test.com & user@test.com. Thanks!
+
 ### Version
 * Ruby version: 2.3.0
 * Rails version: 5.0.0.1
