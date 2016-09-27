@@ -24,6 +24,11 @@
   <%= @history.begintime %>
 </div>
 </br>
+<div>
+  <strong>Booking Time:</strong>
+  <%= @history.created_at %>
+</div>
+</br>
 <div class="actions", id="button">
   <% if isAdmin? %>
       <%= link_to 'My History', showmine_path, class: "btn btn-danger" %>
