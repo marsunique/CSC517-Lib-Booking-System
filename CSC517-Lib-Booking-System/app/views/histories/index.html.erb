@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Histories</h1>
+<h1>All Booking History</h1>
 
 <table>
   <thead>
     <tr>
-      <th style="width: 100px">Number</th>
-      <th style="width: 100px">Building</th>
-      <th style="width: 250px">Email</th>
-      <th style="width: 150px">Date</th>
+      <th style="width: 100px">Room #</th>
+      <th style="width: 200px">Building</th>
+      <th style="width: 200px">Email</th>
+      <th style="width: 200px">Date</th>
       <th style="width: 100px">Begin Time</th>
       <th colspan="2"></th>
     </tr>
@@ -23,14 +23,10 @@
         <td><%= history.date %></td>
         <td><%= history.begintime %></td>
         <td style="width: 75px"><%= link_to 'Show', history %></td>
-        <td style="width: 140px"><%= link_to 'Cancel Reservation', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="width: 150px"><%= link_to 'Cancel Reservation', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<div class="actions", id="button">
-  <%= link_to 'New History', new_history_path, class:"btn btn-danger"%>
-</div>

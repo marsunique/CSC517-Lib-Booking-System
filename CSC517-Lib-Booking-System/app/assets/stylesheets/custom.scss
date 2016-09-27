@@ -50,13 +50,13 @@ a:hover{
   color: #B00100; background-color: transparent;
 }
 td#show{
-  width: 75px;
-}
-td#edit{
-  width: 75px;
+  width: 100px;
 }
 td#delete{
-  width: 75px;
+  width: 100px;
+}
+td#history{
+  width: 150px;
 }
 
 table#room_index
@@ -64,13 +64,16 @@ a:hover{
   color: #B00100; background-color: transparent;
 }
 td#show{
-  width: 75px;
+  width: 100px;
 }
 td#edit{
   width: 75px;
 }
 td#delete{
-  width: 75px;
+  width: 100px;
+}
+td#history{
+  width: 150px
 }
 
 /* footer */

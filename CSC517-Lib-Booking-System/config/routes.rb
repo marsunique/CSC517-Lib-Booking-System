@@ -21,7 +21,9 @@ Rails.application.routes.draw do
 
   #get 'showother', to: 'histories#showother'
 
-  get 'showhistory', to: 'histories#showhistory'
+  get 'show_user_history', to: 'histories#show_user_history'
+
+  get 'show_room_history', to: 'histories#show_room_history'
 
   get 'login', to: 'sessions#new'
 
