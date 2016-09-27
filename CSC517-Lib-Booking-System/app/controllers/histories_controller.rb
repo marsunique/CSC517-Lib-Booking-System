@@ -118,7 +118,7 @@ class HistoriesController < ApplicationController
   def destroy
     if(@history.date == "#{Time.now.to_date}") #judge if it is today
       if(@history.begintime < "#{Time.now.hour+0}")  #judge if the time has passed
-        flash.now[:danger] = 'The reservation begins, you cannot do anything about it'
+        flash.now[:danger] = 'The Reservation Has Begin, Cannot Cancel It'
         @histories = History.all
         render "showmine"
       else
