@@ -1,28 +1,28 @@
 <p id="notice"><%= notice %></p>
 <div>
-<p>
   <strong>Email:</strong>
   <%= @user.email %>
-</p>
-<p>
+</div>
+</br>
+<div>
   <strong>Name:</strong>
   <%= @user.name %>
-</p>
-<p>
+</div>
+</br>
+<div>
   <strong>Type:</strong>
   <% if @user.authority == '0'%>
       User
   <% else %>
       Admin
   <% end %>
-</p>
-<p>
+</div>
+</br>
+<div>
   <strong>Registration Time:</strong>
   <%= @user.created_at %>
-</p>
 </div>
-
-
+</br>
 <% if isAdmin? && @user.email != current_user.email %>
     <div class="actions", id="button">
         <%= link_to 'Back', users_path, class: "btn btn-danger" %>

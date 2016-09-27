@@ -31,7 +31,8 @@
     <%= select_tag("user[authority]", options_for_select([['Admin', "1"],['User', "0"]], 2)) %>
   </div>
 
-  <div class="actions">
+  <div class="actions", id="button">
     <%= f.submit "Create", class: "btn btn-danger" %>
+    <%= link_to 'Back', users_path, class: "btn btn-primary", data: { confirm: 'Do You Want To Discard The Change?' } %>
   </div>
 <% end %>

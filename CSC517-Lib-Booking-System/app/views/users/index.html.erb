@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div>
 <h1>Users</h1>
 
 <table id="user_index">
@@ -23,6 +23,8 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
-<%= link_to 'Add User', new_user_path %>
+<div class="actions", id="button">
+    <%= link_to 'Add User', new_user_path, class:"btn btn-danger" %>
+</div>

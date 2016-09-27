@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Rooms</h1>
-
 <table id="room_index">
   <thead>
     <tr>
@@ -27,6 +26,7 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-<div><%= link_to 'Add Room', new_room_path if isAdmin? %></div>
+</br>
+<div class="actions", id="button">
+  <%= link_to 'Add Room', new_room_path, class:"btn btn-danger" if isAdmin? %>
+</div>
