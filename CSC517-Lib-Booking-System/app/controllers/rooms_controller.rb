@@ -33,14 +33,20 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
-
-    respond_to do |format|
-      if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
-        format.json { render :show, status: :created, location: @room }
-      else
-        format.html { render :new }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
+    sql = "select id from rooms where building = '#{@room.building}' and number = '#{@room.number}' "
+    h = Room.find_by_sql(sql)
+    if !h[0].nil? # Room is already existed
+      flash.now[:danger] = 'Room Already Existed'
+      render "new"
+    else # Room dosen't exist
+      respond_to do |format|
+        if @room.save
+          format.html { redirect_to @room, notice: 'Room was successfully created.' }
+          format.json { render :show, status: :created, location: @room }
+        else
+          format.html { render :new }
+         format.json { render json: @room.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

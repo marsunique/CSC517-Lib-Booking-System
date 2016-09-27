@@ -45,61 +45,78 @@ class HistoriesController < ApplicationController
   # POST /histories.json
   def create
     @history = History.new(history_params)
-    if(@history.date == "#{Time.now.to_date}") #judge if it is today
-      if(@history.begintime < "#{Time.now.hour+1}")  #judge if the time has passed
-        flash.now[:danger] = 'Invalid Time, Please Select Another Time'
-        render "new"
-      else
+    if @history.date == 'None'
+      flash.now[:danger] = 'Please Select A Date'
+      render "new"
+    else
+      if(@history.date == "#{Time.now.to_date}") #judge if it is today
+        if(@history.begintime < "#{Time.now.hour+1}")  #judge if the time has passed
+          flash.now[:danger] = 'This Time Has Passed, Please Select Another Time'
+          render "new"
+        else
+          sql = "select number from rooms where building = '#{@history.building}' and number = '#{@history.number}'"
+          t = Room.find_by_sql(sql)
+          if t[0].nil? #room data is invalid
+            flash.now[:danger] = 'No Such Room'
+            render "new"
+          else #room is existed
+            sql = "select email from users where email = '#{@history.email}' "
+            t = User.find_by_sql(sql)
+            if t[0].nil? #user data is invalid
+              flash.now[:danger] = 'No Such User'
+              render "new"
+            else #user is existed
+              sql = "select id from histories where building = '#{@history.building}' and number = '#{@history.number}' and date = '#{@history.date}' and begintime = '#{@history.begintime}'"
+              h = History.find_by_sql(sql)
+              if !h[0].nil? #has been lent
+                flash.now[:danger] = 'This Room Has Already Been Booked At Selected Time'
+                render "new"
+              else
+                respond_to do |format|
+                  if @history.save
+                    format.html { redirect_to @history, notice: 'Room Was Successfully Booked' }
+                    format.json { render :show, status: :created, location: @history }
+                  else
+                    format.html { render :new }
+                   format.json { render json: @history.errors, status: :unprocessable_entity }
+                  end
+                end
+              end
+            end
+          end
+        end
+      else # it's not today
         sql = "select number from rooms where building = '#{@history.building}' and number = '#{@history.number}'"
         t = Room.find_by_sql(sql)
         if t[0].nil? #room data is invalid
           flash.now[:danger] = 'No Such Room'
           render "new"
         else #room is existed
-          sql = "select id from histories where building = '#{@history.building}' and number = '#{@history.number}' and date = '#{@history.date}' and begintime = '#{@history.begintime}'"
-          h = History.find_by_sql(sql)
-          if !h[0].nil? #has been lent
-            flash.now[:danger] = 'This Room Has Already Been Booked At Selected Time'
+          sql = "select email from users where email = '#{@history.email}' "
+          t = User.find_by_sql(sql)
+          if t[0].nil? #user data is invalid
+            flash.now[:danger] = 'No Such User'
             render "new"
-          else
-            respond_to do |format|
-              if @history.save
-                format.html { redirect_to @history, notice: 'Room Was Successfully Booked' }
-                format.json { render :show, status: :created, location: @history }
-              else
-                format.html { render :new }
-                format.json { render json: @history.errors, status: :unprocessable_entity }
+          else #user is existed
+            sql = "select id from histories where building = '#{@history.building}' and number = '#{@history.number}' and date = '#{@history.date}' and begintime = '#{@history.begintime}'"
+            h = History.find_by_sql(sql)
+            if !h[0].nil? #has been lent
+              flash.now[:danger] = 'This Room Has Already Been Booked At Selected Time'
+              render "new"
+            else
+              respond_to do |format|
+                if @history.save
+                  format.html { redirect_to @history, notice: 'Room Was Successfully Booked' }
+                  format.json { render :show, status: :created, location: @history }
+                else
+                  format.html { render :new }
+                  format.json { render json: @history.errors, status: :unprocessable_entity }
+                end
               end
             end
           end
         end
       end
-    else # time is valid
-      sql = "select number from rooms where building = '#{@history.building}' and number = '#{@history.number}'"
-      t = Room.find_by_sql(sql)
-      if t[0].nil? #room data is invalid
-        flash.now[:danger] = 'No Such Room'
-        render "new"
-      else #room is existed
-        sql = "select id from histories where building = '#{@history.building}' and number = '#{@history.number}' and date = '#{@history.date}' and begintime = '#{@history.begintime}'"
-        h = History.find_by_sql(sql)
-        if !h[0].nil? #has been lent
-          flash.now[:danger] = 'This Room Has Already Been Booked At Selected Time'
-          render "new"
-        else
-          respond_to do |format|
-            if @history.save
-              format.html { redirect_to @history, notice: 'Room Was Successfully Booked' }
-              format.json { render :show, status: :created, location: @history }
-            else
-              format.html { render :new }
-              format.json { render json: @history.errors, status: :unprocessable_entity }
-            end
-          end
-        end
-
-      end
-
     end
   end
 

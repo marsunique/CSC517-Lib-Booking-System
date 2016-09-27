@@ -31,7 +31,7 @@
 
   <div class="field">
     <%= f.label :date %>
-    <%= select_tag("history[date]", options_for_select([[], [Time.now.to_date, "#{Time.now.to_date}"], [Time.now.to_date + 1.days, "#{Time.now.to_date + 1.days}"], [Time.now.to_date + 2.days, "#{Time.now.to_date + 2.days}"], [Time.now.to_date + 3.days, "#{Time.now.to_date + 3.days}"], [Time.now.to_date + 4.days, "#{Time.now.to_date + 4.days}"], [Time.now.to_date + 5.days, "#{Time.now.to_date + 5.days}"], [Time.now.to_date + 6.days, "#{Time.now.to_date + 6.days}"], [Time.now.to_date + 7.days, "#{Time.now.to_date + 7.days}"]], 9 ))%>
+    <%= select_tag("history[date]", options_for_select([["Select a date", 'None'], [Time.now.to_date, "#{Time.now.to_date}"], [Time.now.to_date + 1.days, "#{Time.now.to_date + 1.days}"], [Time.now.to_date + 2.days, "#{Time.now.to_date + 2.days}"], [Time.now.to_date + 3.days, "#{Time.now.to_date + 3.days}"], [Time.now.to_date + 4.days, "#{Time.now.to_date + 4.days}"], [Time.now.to_date + 5.days, "#{Time.now.to_date + 5.days}"], [Time.now.to_date + 6.days, "#{Time.now.to_date + 6.days}"], [Time.now.to_date + 7.days, "#{Time.now.to_date + 7.days}"]], 9 ))%>
   </div>
 
   <div class="field">
