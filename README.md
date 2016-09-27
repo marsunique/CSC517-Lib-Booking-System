@@ -12,12 +12,10 @@
   Password:000000
 
 *Please Don't Delete These Three Accounts Above. If you want to test delete function, you can creat a new account and delete it. Thank You*
-
 ## Features
 We design different UI for different types of user. The navigation bar on the top will display different menus for normal users and admins.
 Authority control. Normal users and admins have different level of access to some actions, e.g. delete a user, add a room, view all users etc.
 Following is the the detailed infomation.
-
 ### Admin
 * One pre-configured admin. This admin cannot be deleted by other admins.
 * Create admins and users.
@@ -38,7 +36,6 @@ Following is the the detailed infomation.
 
 ## Notice
 If admin books a room on behalf of a user, it would redirect to **All Book Histories** page instead of a specific record page directly.
-
 ## Version
 * Ruby version: 2.3.0
 * Rails version: 5.0.0.1
