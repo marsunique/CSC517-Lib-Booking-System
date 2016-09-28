@@ -57,8 +57,13 @@ class HistoriesController < ApplicationController
           sql = "select number from rooms where building = '#{@history.building}' and number = '#{@history.number}'"
           t = Room.find_by_sql(sql)
           if t[0].nil? #room data is invalid
-            flash.now[:danger] = 'No Such Room'
-            render "new"
+            if @history.number == '' #didn't enter a room number
+              flash.now[:danger] = 'Please Enter A Room Number'
+              render "new"
+            else
+              flash.now[:danger] = 'No Such Room'
+              render "new"
+            end
           else #room is existed
             sql = "select email from users where email = '#{@history.email}' "
             t = User.find_by_sql(sql)
@@ -89,8 +94,13 @@ class HistoriesController < ApplicationController
         sql = "select number from rooms where building = '#{@history.building}' and number = '#{@history.number}'"
         t = Room.find_by_sql(sql)
         if t[0].nil? #room data is invalid
-          flash.now[:danger] = 'No Such Room'
-          render "new"
+          if @history.number == '' #didn't enter a room number
+            flash.now[:danger] = 'Please Enter A Room Number'
+            render "new"
+          else
+            flash.now[:danger] = 'No Such Room'
+            render "new"
+          end
         else #room is existed
           sql = "select email from users where email = '#{@history.email}' "
           t = User.find_by_sql(sql)
