@@ -57,8 +57,13 @@ class HistoriesController < ApplicationController
           sql = "select number from rooms where building = '#{@history.building}' and number = '#{@history.number}'"
           t = Room.find_by_sql(sql)
           if t[0].nil? #room data is invalid
-            flash.now[:danger] = 'No Such Room'
-            render "new"
+            if @history.number == '' #didn't enter a room number
+              flash.now[:danger] = 'Please Enter A Room Number'
+              render "new"
+            else
+              flash.now[:danger] = 'No Such Room'
+              render "new"
+            end
           else #room is existed
             sql = "select email from users where email = '#{@history.email}' "
             t = User.find_by_sql(sql)
@@ -74,8 +79,9 @@ class HistoriesController < ApplicationController
               else
                 respond_to do |format|
                   if @history.save
-                    format.html { redirect_to @history, notice: 'Room Was Successfully Booked' }
+                    format.html { redirect_to @history }
                     format.json { render :show, status: :created, location: @history }
+                    flash[:success] = "Room Was Successfully Booked"
                   else
                     format.html { render :new }
                    format.json { render json: @history.errors, status: :unprocessable_entity }
@@ -89,8 +95,13 @@ class HistoriesController < ApplicationController
         sql = "select number from rooms where building = '#{@history.building}' and number = '#{@history.number}'"
         t = Room.find_by_sql(sql)
         if t[0].nil? #room data is invalid
-          flash.now[:danger] = 'No Such Room'
-          render "new"
+          if @history.number == '' #didn't enter a room number
+            flash.now[:danger] = 'Please Enter A Room Number'
+            render "new"
+          else
+            flash.now[:danger] = 'No Such Room'
+            render "new"
+          end
         else #room is existed
           sql = "select email from users where email = '#{@history.email}' "
           t = User.find_by_sql(sql)
@@ -106,8 +117,9 @@ class HistoriesController < ApplicationController
             else
               respond_to do |format|
                 if @history.save
-                  format.html { redirect_to @history, notice: 'Room Was Successfully Booked' }
+                  format.html { redirect_to @history }
                   format.json { render :show, status: :created, location: @history }
+                  flash[:success] = 'Room Was Successfully Booked'
                 else
                   format.html { render :new }
                   format.json { render json: @history.errors, status: :unprocessable_entity }
@@ -125,8 +137,9 @@ class HistoriesController < ApplicationController
   def update
     respond_to do |format|
       if @history.update(history_params)
-        format.html { redirect_to @history, notice: 'History Was Successfully Updated.' }
+        format.html { redirect_to @history }
         format.json { render :show, status: :ok, location: @history }
+        flash[:success] = 'Booking Info Was Successfully Updated'
       else
         format.html { render :edit }
         format.json { render json: @history.errors, status: :unprocessable_entity }
@@ -139,9 +152,13 @@ class HistoriesController < ApplicationController
   def destroy
     if(@history.date == "#{Time.now.to_date}") #judge if it is today
       if(@history.begintime < "#{Time.now.hour+0}")  #judge if the time has passed
-        flash.now[:danger] = 'The Reservation Has Begun, Cannot Cancel It'
+        flash[:danger] = 'The Reservation Has Begun, Cannot Cancel It.'
         @histories = History.all
-        render "showmine"
+        if isAdmin?
+          redirect_to histories_path
+        else
+          redirect_to showmine_path
+        end
       else
         @history.destroy
         flash[:success] = 'Reservation Is Cancelled'
@@ -154,6 +171,13 @@ class HistoriesController < ApplicationController
     elsif(@history.date > "#{Time.now.to_date}")
       @history.destroy
       flash[:success] = 'Reservation Is Cancelled'
+      if isAdmin?
+        redirect_to histories_path
+      else
+        redirect_to showmine_path
+      end
+    else
+      flash[:danger] = 'Request Denied. This Date Has Passed.'
       if isAdmin?
         redirect_to histories_path
       else

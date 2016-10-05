@@ -45,8 +45,9 @@ class RoomsController < ApplicationController
     else # Room dosen't exist
       respond_to do |format|
         if @room.save
-          format.html { redirect_to @room, notice: 'Room was successfully created.' }
+          format.html { redirect_to @room }
           format.json { render :show, status: :created, location: @room }
+          flash[:success] = 'Room Was Successfully Created'
         else
           format.html { render :new }
          format.json { render json: @room.errors, status: :unprocessable_entity }
@@ -60,8 +61,9 @@ class RoomsController < ApplicationController
   def update
     respond_to do |format|
       if @room.update(room_params)
-        format.html { redirect_to @room, notice: 'Room was successfully updated.' }
+        format.html { redirect_to @room }
         format.json { render :show, status: :ok, location: @room }
+        flash[:success] = 'Room Was Successfully Updated'
       else
         format.html { render :edit }
         format.json { render json: @room.errors, status: :unprocessable_entity }

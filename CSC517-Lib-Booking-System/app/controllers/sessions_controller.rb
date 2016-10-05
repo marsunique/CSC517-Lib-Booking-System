@@ -27,12 +27,12 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to root_url
-    flash[:success] = "You Have Successfully Logged Out."
+    flash[:success] = 'You Have Successfully Logged Out'
   end
 
   def switch
     log_out
     redirect_to login_path
-    flash[:success] = "You Have Successfully Logged Out."
+    flash[:success] = 'You Have Successfully Logged Out'
   end
 end
