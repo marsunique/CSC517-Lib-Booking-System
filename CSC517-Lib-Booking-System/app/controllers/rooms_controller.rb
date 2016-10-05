@@ -74,6 +74,8 @@ class RoomsController < ApplicationController
   # DELETE /rooms/1
   # DELETE /rooms/1.json
   def destroy
+    sql = "delete from histories where number = '#{@room.number}' and building = '#{@room.building}' and (date > '#{Time.now.to_date}' or (date = '#{Time.now.to_date}' and begintime > '#{Time.now.hour}' ))"
+    h = History.find_by_sql(sql)
     @room.destroy
     flash[:success] = 'Room Is Successfully Deleted'
     redirect_to rooms_path
