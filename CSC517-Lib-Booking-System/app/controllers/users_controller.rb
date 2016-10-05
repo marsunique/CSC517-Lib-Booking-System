@@ -89,6 +89,8 @@ class UsersController < ApplicationController
       flash[:danger] = 'Oops. Don\'t Delete Yourself'
       redirect_to users_path
     else
+      sql = "delete from histories where email = '#{@user.email}' and (date > '#{Time.now.to_date}' or (date = '#{Time.now.to_date}' and begintime > '#{Time.now.hour}' ))"
+      h = History.find_by_sql(sql)
       @user.destroy
       redirect_to users_path
       flash[:success] = 'User Was Successfully Deleted'
