@@ -36,7 +36,11 @@ Following is the the detailed infomation.
 * View own booking history (Room->My Booking History).
 
 ## Notice
-If admin books a room on behalf of a user, it would redirect to **All Book Histories** page instead of a specific record page directly.
+* If admin books a room on behalf of a user, it would redirect to **All Book Histories** page instead of a specific record page directly.
+* If a room was deleted, the future booking records would also be deleted, but the past records would be kept.
+* If admin or user was delelted, the future booking records would also be delted, but the past records would be kept.
+* In Search Room, you could submit any kind of requirements and any number of requirements, including room number, size and building.
+
 ## Version
 * Ruby version: 2.3.0
 * Rails version: 5.0.0.1
