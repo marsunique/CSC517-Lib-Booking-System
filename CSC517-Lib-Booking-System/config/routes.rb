@@ -25,7 +25,11 @@ Rails.application.routes.draw do
 
   get 'show_room_history', to: 'histories#show_room_history'
 
+  get 'sign_up', to: 'users#sign_up'
+
   get 'login', to: 'sessions#new'
+
+  post 'sign_up', to: 'users#create'
 
   post 'login', to: 'sessions#create'
 

@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   include UsersHelper
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:edit, :update, :show, :index, :new, :creat, :destroy]
+  before_action :logged_in_user, only: [:edit, :update, :show, :index, :new, :destroy]
   before_action :correct_user_show, only: [:show]
   #user cannot see other's info, admin can
   before_action :correct_user_edit, only:[:edit, :update]
   #admin and user cannot edit other's info
-  before_action :admin_login, only: [:new, :create, :destroy, :index]
+  before_action :admin_login, only: [:new, :destroy, :index]
 
   # GET /users
   # GET /users.json
@@ -33,14 +33,25 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+      if logged_in?
+        if @user.save
+          format.html { redirect_to @user }
+          format.json { render :show, status: :created, location: @user }
+          flash[:success] = "User Was Successfully Created."
+        else
+          format.html { render :new }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        if @user.save
+          format.html { redirect_to login_path }
+          format.json { render :login_path, status: :created }
+          flash[:success] = "User Was Successfully Created."
+        else
+          format.html { render :sign_up }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -86,6 +97,11 @@ class UsersController < ApplicationController
 
   # show history
   def showhistory
+  end
+
+  # member sign up
+  def sign_up
+    @user = User.new
   end
 
   private
