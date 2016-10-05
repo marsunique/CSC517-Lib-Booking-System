@@ -8,11 +8,15 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     @rooms = Room.all
-    if params[:search]
-      @rooms = Room.search(params[:search])
-    else
+    if params[:searchNumber] == ''  && params[:searchSize] == '' && params[:searchBuilding] == ''
       @rooms = Room.all.order('created_at DESC')
+    else
+      @rooms = Room.search(params[:searchNumber], params[:searchSize], params[:searchBuilding])
     end
+    #elsif params[:searchSize] != ''
+      #@rooms = Room.searchSize(params[:searchSize])
+    #else
+    #end
   end
 
   # GET /rooms/1
@@ -73,14 +77,7 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
-  def searchAllRoom
-    @rooms = Room.all
-    if params[:search]
-      @rooms = Room.search(params[:search]).order("created_at DESC")
-    else
-      @rooms = Room.all.order('created_at DESC')
-    end
-  end
+
 
 
   private

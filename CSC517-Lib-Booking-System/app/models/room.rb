@@ -5,9 +5,28 @@ class Room < ApplicationRecord
   validates :size, presence: true
   validates :building, presence: true
 
-  def self.search(search)
-    where("number LIKE ?", "%#{search}%")
+  def self.search(number, size, building)
+      if number != '' && size == '' && building == ''
+        where("number LIKE ?", "%#{number}%")
+      elsif number != '' && size == '' && building != ''
+        where("number LIKE ?", "%#{number}%").where("building LIKE ?", "%#{building}%")
+      elsif number != '' && size != '' && building == ''
+        where("number LIKE ?", "%#{number}%").where("size LIKE ?", "%#{size}%")
+      elsif number != '' && size != '' && building != ''
+        where("number LIKE ?", "%#{number}%").where("size LIKE ?", "%#{size}%").where("building LIKE ?", "%#{building}%")
+      elsif number == '' && size == '' && building != ''
+        where("building LIKE ?", "%#{building}%")
+      elsif number == '' && size != '' && building == ''
+        where("size LIKE ?", "%#{size}%")
+      elsif number == '' && size != '' && building != ''
+        where("size LIKE ?", "%#{size}%").where("building LIKE ?", "%#{building}%")
+      end
+      #if building != ''
+       # where("building LIKE ?", "%#{building}%")
+      #end
+  end
+
+  def self.searchSize(search)
     where("size LIKE ?", "%#{search}%")
-    #where("building LIKE ?", "%#{search}%")
   end
 end

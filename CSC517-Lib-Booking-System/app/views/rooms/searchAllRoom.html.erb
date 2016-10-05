@@ -1,8 +1,19 @@
 <% provide(:title, "Search Room") %> <h1>Search Room</h1>
 <%= form_tag(rooms_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search by number or size" %>
+    <div class="field">
+      <%= text_field_tag :searchNumber, params[:searchNumber], placeholder: "Search by number" %>
+    </div>
+
+    <div class="field">
+      <%= select_tag :searchSize, options_for_select([['', ], ['4', "4"], ['6', "6"], ['12', "12"]], 4)%>
+    </div>
+
+    <div class="field">
+      <%= select_tag :searchBuilding, options_for_select([['', ], ['James.B.Hunt', "James.B.Hunt"], ['D.H.Hill', "D.H.Hill"]], 3)%>
+    </div>
     <%= submit_tag "Search", class: "btn btn-danger" %>
 <% end %>
+
 
 
 
