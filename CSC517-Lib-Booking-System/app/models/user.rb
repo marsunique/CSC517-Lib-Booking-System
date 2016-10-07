@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :authority, presence: true
   has_secure_password
+  has_many :history
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

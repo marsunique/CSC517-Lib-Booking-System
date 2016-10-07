@@ -4,6 +4,7 @@ class Room < ApplicationRecord
   validates :number, presence: true
   validates :size, presence: true
   validates :building, presence: true
+  has_many :history
 
   def self.search(number, size, building)
       if number != '' && size == '' && building == ''
