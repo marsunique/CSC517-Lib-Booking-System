@@ -1,5 +1,5 @@
 # README
-## link
+## Link
 http://powerful-badlands-79365.herokuapp.com/
 ## Log In Account 
 * Please do not delete 1@test.com & user@test.com. Thanks!)
